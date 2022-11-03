@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
 
-
 *{
     margin: 0;
     padding: 0;
@@ -81,7 +80,6 @@ a:visited{color: black;}
 }
 .posts-container{
     margin-top: 10rem; 
-    margin-bottom: 15rem;
 }
 .post{
     border-color: black;
@@ -128,8 +126,7 @@ a:visited{color: black;}
     color: black
 }
 .post-footer{
-    margin: 2rem 1rem;
-    padding: 0.5rem 6px;
+    margin: 0rem 1rem;
 }
 #time-stamp{
     color: rgb(116, 116, 116);

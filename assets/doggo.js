@@ -2,7 +2,6 @@
     Dog Image API compliments of: 
         https://dog.ceo/dog-api/documentation/random
 */
-
 const dogs = `https://dog.ceo/api/breeds/image/random/6`
 const names = `https://randomuser.me/api/`
 
@@ -54,7 +53,7 @@ async function showPosts(){
 						<h2 class="sharing"><i class="fas fa-comment-dots"></i></h2>
 						<h2 class="sharing"><i class="fas fa-paper-plane"></i></h2>
 					</div>
-					<div class="like row my-1">
+					<div class="like row">
 						<h5 class="liked">Liked by <span class="bold">YOU</span> and <span class="bold">${Math.floor(likes)} others</span></h5>
 					</div>
 				</div>
@@ -75,7 +74,7 @@ function showLoading(){
 	setTimeout(()=>{
 		loader.classList.remove('show');
 		showPosts()
-	}, 1500)
+	}, 2500)
 }
 
 // User Excperience Loader
@@ -100,5 +99,4 @@ function closeModal() {
   }
 
 // Show Initial Posts 
-showPosts()
 showPosts()
