@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    color: black;
+    background: rgb(247, 245, 238);
+}
+.center{
+    justify-content: center;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+#content{
+    padding-top: 96px;
+
+}
+#navbar{ background: white;}
+a{ color: black !important; text-decoration: none;}
+a:visited{color: black;}
+
+#nav-content{
+    display: flex; 
+    flex-direction: row;
+}
+
+.nav-link{
+    padding: 6px;
+}
+
+.mx-1{ margin-left: 1rem; margin-right: 1rem;}
+.mx-2{ margin-left: 2rem; margin-right: 2rem;}
+.mx-3{ margin-left: 3rem; margin-right: 3rem;}
+.mx-4{ margin-left: 4rem; margin-right: 4rem;}
+.my-1{ margin-top: 1rem; margin-bottom: 1rem;}
+.my-2{ margin-top: 2rem; margin-bottom: 2rem;}
+.my-3{ margin-top: 3rem; margin-bottom: 3rem;}
+.my-4{ margin-top: 4rem; margin-bottom: 4rem;}
+
+.px-1{ padding-left: 1rem; padding-right: 1rem;}
+.px-2{ padding-left: 2rem; padding-right: 2rem;}
+.px-3{ padding-left: 3rem; padding-right: 3rem;}
+.px-4{ padding-left: 4rem; padding-right: 4rem;}
+.py-1{ padding-top: 1rem; padding-bottom: 1rem;}
+.py-2{ padding-top: 2rem; padding-bottom: 2rem;}
+.py-3{ padding-top: 3rem; padding-bottom: 3rem;}
+.py-4{ padding-top: 4rem; padding-bottom: 4rem;}
+
+.header{
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: black
+}
+.justify-content-ends{
+    justify-content: space-between;
+    place-items: center;
+}
+#app-name{
+    font-family: 'Cedarville Cursive', cursive;
+    font-weight: bold;
+    text-decoration: none;
+}
+.container{
+    max-width: 40%;
+    margin: auto;
+}
+.posts-container{
+    margin-top: 10rem; 
+    margin-bottom: 15rem;
+}
+.post{
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px; 
+    background: white;
+    margin-top: 2.5rem;
+}
+.post-header{
+    display: flex; 
+    flex-direction: row;
+    place-items: center;
+    padding: 1rem 0.75rem;
+}
+.post-profile-img{
+    padding: 0 0.5rem;
+}
+#profile-image{
+    height: 3rem; 
+    width: 3rem; 
+    border-radius: 50%;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+}
+.post-profile-txt{
+    font-weight: bold;
+}
+#post-image{
+    max-width: 100%;
+    max-height: 40vh;
+    display: block;
+    margin: auto;
+}
+.sharing{margin: 6px;}
+.like{margin: 6px;}
+.liked{
+    color: rgb(116, 116, 116);
+    letter-spacing: 1px;
+}
+.bold{
+    font-weight: bold;
+    color: black
+}
+.post-footer{
+    margin: 2rem 1rem;
+    padding: 0.5rem 6px;
+}
+#time-stamp{
+    color: rgb(116, 116, 116);
+    letter-spacing: 1px;
+    padding: 1rem 0;
+}
+
+.loader{
+    opacity: 0;
+    display: flex;
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    transition: opacity 0.4s ease-in;
+}
+.loader.show{
+    opacity: 1;
+}
+
+.fa-paw{
+    margin: 10px;
+    animation: bounce 0.5s ease-in infinite;
+}
+
+.fa-paw:nth-of-type(2){
+    animation-delay: 0.1s;
+}
+.fa-paw:nth-of-type(3){
+    animation-delay: 0.2s;
+}
+.fa-paw:nth-of-type(4){
+    animation-delay: 0.3s;
+}
+
+
+@keyframes bounce {
+    0%, 100%{
+        transform: translateY(0)
+    }
+    25%, 75%{
+        transform: translateY(10px)
+    }
+    50%{
+        transform: translateY(10px)
+    }
+}
+
+/* Modal */
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+    opacity: 0.95;
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    position: relative;
+    background-color: #fefefe;
+    opacity: 1;
+    margin: auto;
+    padding: 0;
+    width: 50%;
+    max-width: 1080px;
+  }
+  .pad{
+      padding: 1.5rem;
+  }
+
+  .modal-header{
+      text-align: left;
+      padding: 2rem 1rem;
+  }
+  .modal-hr{
+      width: 97%;
+      margin: auto;
+  }
+  .modal-body{
+      text-align: left; 
+      padding: 1rem 1rem;
+      font-size: 18px; 
+  }
+  .modal-link{
+      color: blue !important;
+      text-decoration: underline;
+  }
+  .modal-footer{
+      display: flex; 
+      flex-direction: row;
+      justify-content: center;
+      margin: 1rem;
+  }
+
+  .btn{
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 1rem 3rem;
+      display: block;
+  }
+  .btn:hover{
+      border: 1px solid black;
+  }
+  /* The Modal Close Button */
+.close {
+    color: white;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #999;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+@media only screen and (max-width: 720px) {
+    .container{
+        max-width: 95%;
+    }
+    .modal-content{
+        width: 95%;
+    }
+    .posts-container{
+        margin-top: 8rem;
+    }
+    .post-header{
+        padding: 1rem 0;
+    }
+    
+    .sharing{margin: 3px;}
+    .like{margin: 3px;}
+
+    .post-footer{margin: 1rem; padding: 0;}
+
+  }
+
