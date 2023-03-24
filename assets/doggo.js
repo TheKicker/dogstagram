@@ -19,7 +19,54 @@ async function getPosts(){
 async function getUser(){
 	const response = await fetch(names);
 	const data = await response.json();
-	return data
+	var rand = ((Math.random() * 10) + 1)
+	var profile = []
+	var profilePic = data.results[0].picture.thumbnail
+	var profileUsername = ""
+	var profileName = `${profileUsername = data.results[0].name.first} ${profileUsername = data.results[0].name.last}`
+	
+	rand = Math.floor(rand)
+	if (rand == 1){
+		profileUsername = `${data.results[0].name.first}${data.results[0].name.last}`
+	}
+	else if (rand == 2) {
+		profileUsername = `${data.results[0].name.first}${data.results[0].name.last}`
+	} else if (rand == 3) {
+		let u = data.results[0].name.first
+		profileUsername = `${u.charAt(0)}.${data.results[0].name.last}`
+	} else if (rand == 4) {
+		profileUsername = data.results[0].name.first
+	} else if (rand == 5) {
+		profileUsername = data.results[0].name.first
+	} else if (rand == 6) {
+		profileUsername = data.results[0].name.first
+	} else if (rand == 7) {
+		profileUsername = `TooCute${data.results[0].name.first}`
+	} else {
+		profileUsername = `TheReal${data.results[0].name.first}`
+	}
+
+	var odds = ((Math.random() * 5) + 1)
+	odds = Math.floor(odds)
+	var suffix2 = ((Math.random() * 99) + 1)
+	suffix2 = Math.floor(suffix2)
+	var suffix4 = ((Math.random() * 9999) + 1)
+	suffix4 = Math.floor(suffix4)
+	if (odds == 1){
+		//	pass
+	} else if (odds == 2){
+		// 	pass
+	} else if (odds == 3){
+		profileUsername = `${profileUsername.concat(suffix2)}`
+	} else if (odds == 4){
+		profileUsername = `${profileUsername.concat(suffix2)}`
+	} else {
+		profileUsername = `${profileUsername.concat(suffix4)}`
+	}
+
+	console.log(`Odds: ${odds} \n Rand: ${rand}`)
+	profile.push(profilePic, profileUsername, profileName)
+	return profile
 }
 
 // Show Posts in DOM 
@@ -31,19 +78,14 @@ async function showPosts(){
 		const postElement = document.createElement('div');
 		postElement.classList.add('post');
 		
-		var name = await getUser()
+		var profile = await getUser()
 		var hours = ((Math.random() * 23) + 2)
-		var username = ((Math.random() * 99) + 1)
 		var likes = ((Math.random() * 999) + 1)
-		var rand = ((Math.random() * 2) + 1)
-		rand = Math.floor(rand)
-		let dash = '_'
-		rand == 1 ? dash = '-' : dash = '_'
 
 		postElement.innerHTML = `
 			<div class="post-header">
-				<div class="post-profile-img"><img src="${name.results[0].picture.thumbnail}" id="profile-image" alt="Randomly generated user profile picture"></div>
-				<div class="post-profile-txt"><h4>${name.results[0].name.first}${dash}${name.results[0].name.last}${Math.floor(username)}</h4></div>
+				<div class="post-profile-img"><img src="${profile[0]}" id="profile-image" alt="Randomly generated user profile picture"></div>
+				<div class="post-profile-txt"><h4>${profile[1]}</h4></div>
 			</div>
 			<div class="post-body">
 				<img src="${posts.message[i]}" id="post-image" alt="Dogstagram image post of a dog somewhere in the world just as happy as can be.  Woof! ">
