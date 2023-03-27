@@ -27,26 +27,40 @@ async function getUser(){
 	
 	rand = Math.floor(rand)
 	if (rand == 1){
+		// JohnAppleseed
 		profileUsername = `${data.results[0].name.first}${data.results[0].name.last}`
 	}
 	else if (rand == 2) {
+		// JohnAppleseed
 		profileUsername = `${data.results[0].name.first}${data.results[0].name.last}`
 	} else if (rand == 3) {
+		// JAppleseed
 		let u = data.results[0].name.first
 		profileUsername = `${u.charAt(0)}.${data.results[0].name.last}`
 	} else if (rand == 4) {
+		// John
 		profileUsername = data.results[0].name.first
 	} else if (rand == 5) {
+		// John
 		profileUsername = data.results[0].name.first
 	} else if (rand == 6) {
+		// John
 		profileUsername = data.results[0].name.first
 	} else if (rand == 7) {
+		// OleJohn
+		profileUsername = `Ole${data.results[0].name.first}`
+	} else if (rand == 8) {
+		// I_am_John
+		profileUsername = `I_am_${data.results[0].name.first}`
+	} else if (rand == 9) {
+		// TooCuteJohn
 		profileUsername = `TooCute${data.results[0].name.first}`
 	} else {
+		// TheRealJohn
 		profileUsername = `TheReal${data.results[0].name.first}`
 	}
 
-	var odds = ((Math.random() * 5) + 1)
+	var odds = ((Math.random() * 6) + 1)
 	odds = Math.floor(odds)
 	var suffix2 = ((Math.random() * 99) + 1)
 	suffix2 = Math.floor(suffix2)
@@ -57,8 +71,10 @@ async function getUser(){
 	} else if (odds == 2){
 		// 	pass
 	} else if (odds == 3){
-		profileUsername = `${profileUsername.concat(suffix2)}`
+		// pass
 	} else if (odds == 4){
+		profileUsername = `${profileUsername.concat(suffix2)}`
+	} else if (odds == 5){
 		profileUsername = `${profileUsername.concat(suffix2)}`
 	} else {
 		profileUsername = `${profileUsername.concat(suffix4)}`
@@ -82,10 +98,12 @@ async function showPosts(){
 		var hours = ((Math.random() * 23) + 2)
 		var likes = ((Math.random() * 999) + 1)
 
+		// <div class="post-profile-txt"><h4>${profile[1]}</h4> ⚬<h4 id="time-stamp">${Math.floor(hours)} HOURS AGO</h4></div>
+
 		postElement.innerHTML = `
 			<div class="post-header">
 				<div class="post-profile-img"><img src="${profile[0]}" id="profile-image" alt="Randomly generated user profile picture"></div>
-				<div class="post-profile-txt"><h4>${profile[1]}</h4></div>
+				<div class="post-profile-txt"><h4>${profile[1]} <span id="time-stamp">⚬ ${Math.floor(hours)}h</span></h4></div>
 			</div>
 			<div class="post-body">
 				<img src="${posts.message[i]}" id="post-image" alt="Dogstagram image post of a dog somewhere in the world just as happy as can be.  Woof! ">
@@ -96,18 +114,40 @@ async function showPosts(){
 						<h2 class="sharing"><i class="fas fa-paper-plane"></i></h2>
 					</div>
 					<div class="like row">
-						<h5 class="liked">Liked by <span class="bold">YOU</span> and <span class="bold">${Math.floor(likes)} others</span></h5>
+						<h4>${Math.floor(likes)} likes</h5>
+					</div>
+					<div class="like row">
+						<strong>${profile[1]}</strong> &nbsp; ${getBreed(posts.message[i])}
 					</div>
 				</div>
 			</div>
-			<div class="post-footer">
-				<hr>
-				<h5 id="time-stamp">${Math.floor(hours)} HOURS AGO</h5>
-			</div>
+			
 		`;
 		postsContainer.appendChild(postElement)
 	}
 	console.log('Posts added')
+}
+
+function getBreed(url){
+	const [http, blank, domain, breeds, breed, image] = url.split("/")
+
+	var adjectives1 = ["#dogstagram", "#dog", "#doggo", "#pupper", "#puppylove", "#puppy", "#InstaDog", "#DogOfTheDay", "#Doge", "#Wags", "#ILoveMyDog", "#DogSitting", "#PuppyGram", "#InstaPup", "#PuppyDogEyes"]
+	var adjectives2 = ["#Adopt", "#AdoptDontShop", "#Adoption", "#AdoptDogs", "#AdoptDontBuy", "#AdoptDontBreed", "#Rescue", "#RescueDog", "#RescueDogsOfInstagram", "#Rescued", "#RescuePuppy", "#RescueDogsRule", "#RescueDogsOfIG", "#RescuePetsOfInstagram", "#Foster", "#FosterDog", "#ShelterDog"]
+
+	var rand1 = ((Math.random() * adjectives1.length))
+	rand1 = Math.floor(rand1)
+	var rand2 = ((Math.random() * adjectives2.length))
+	rand2 = Math.floor(rand2)
+
+	if(breed.includes("-"))
+	{
+		var b = breed.split("-")
+		b = `#${b[1]} #${b[0]} ${adjectives1[rand1]} ${adjectives2[rand2]}`
+	} else {
+		var b = `#${breed} ${adjectives1[rand1]} ${adjectives2[rand2]}`
+	}
+
+	return b
 }
 
 // Show Loader & Fetch more posts 
